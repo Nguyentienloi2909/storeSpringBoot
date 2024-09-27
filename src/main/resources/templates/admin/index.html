@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" style="" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security6">
+
+<head th:replace="admin/fragments/head :: head"></head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+  <div class="wrapper">
+  <!--  <header th:replace="layout/header :: header"></header>-->
+
+    <header th:replace="admin/fragments/header :: header"></header>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Blank page
+          <small>it all starts here</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="#">Examples</a></li>
+          <li class="active">Blank page</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <div class="chart">
+        <canvas id="areaChart" style="height: 197px; width: 470px;" height="246" width="587"></canvas>
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer th:replace="admin/fragments/footer :: footer"></footer>
+
+  </div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+  <div th:replace="admin/fragments/js :: js"></div>
+
+</body>
+</html>
+

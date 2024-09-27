@@ -1,0 +1,299 @@
+<header class="header header-intro-clearance header-4" th:fragment="header">
+  <div class="header-top">
+    <div class="container">
+      <div class="header-left">
+        <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+      </div><!-- End .header-left -->
+
+      <div class="header-right">
+
+        <ul class="top-menu">
+          <li>
+            <a href="#">Links</a>
+            <ul>
+              <li>
+                <div class="header-dropdown">
+                  <a href="#">USD</a>
+                  <div class="header-menu">
+                    <ul>
+                      <li><a href="#">Eur</a></li>
+                      <li><a href="#">Usd</a></li>
+                    </ul>
+                  </div><!-- End .header-menu -->
+                </div>
+              </li>
+              <li>
+                <span th:if = "${user == null}">
+                  <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
+                </span>
+                <span th:if = "${user != null}" >
+                  <div class="header-dropdown">
+                  <a href="#" th:text="${user.fullname}"></a>
+                  <div class="header-menu">
+                    <ul>
+                      <li><a href="#">Thông tin cá nhân</a></li>
+                      <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                    </ul>
+                  </div><!-- End .header-menu -->
+                </div>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul><!-- End .top-menu -->
+      </div><!-- End .header-right -->
+
+    </div><!-- End .container -->
+  </div><!-- End .header-top -->
+
+  <div class="header-middle">
+    <div class="container">
+      <div class="header-left">
+        <button class="mobile-menu-toggler">
+          <span class="sr-only">Toggle mobile menu</span>
+          <i class="icon-bars"></i>
+        </button>
+
+        <a href="index.html" class="logo">
+          <img th:src="@{fe/images/demos/demo-4/logo.png}" alt="Molla Logo" width="105" height="25">
+        </a>
+      </div><!-- End .header-left -->
+
+      <div class="header-center">
+        <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+          <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+          <form action="#" method="get">
+            <div class="header-search-wrapper search-wrapper-wide">
+              <label for="q" class="sr-only">Search</label>
+              <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+              <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required="">
+            </div><!-- End .header-search-wrapper -->
+          </form>
+        </div><!-- End .header-search -->
+      </div>
+
+      <div class="header-right">
+        <div class="dropdown compare-dropdown">
+          <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+            <div class="icon">
+              <i class="icon-random"></i>
+            </div>
+            <p>Compare</p>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right">
+            <ul class="compare-products">
+              <li class="compare-product">
+                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
+              </li>
+              <li class="compare-product">
+                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
+              </li>
+            </ul>
+
+            <div class="compare-actions">
+              <a href="#" class="action-link">Clear All</a>
+              <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
+            </div>
+          </div><!-- End .dropdown-menu -->
+        </div><!-- End .compare-dropdown -->
+
+        <div class="wishlist">
+          <a href="wishlist.html" title="Wishlist">
+            <div class="icon">
+              <i class="icon-heart-o"></i>
+              <span class="wishlist-count badge">3</span>
+            </div>
+            <p>Wishlist</p>
+          </a>
+        </div><!-- End .compare-dropdown -->
+
+        <div class="dropdown cart-dropdown">
+          <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+            <div class="icon">
+              <i class="icon-shopping-cart"></i>
+              <span class="cart-count">2</span>
+            </div>
+            <p>Cart</p>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-cart-products">
+              <div class="product">
+                <div class="product-cart-details">
+                  <h4 class="product-title">
+                    <a href="product.html">Beige knitted elastic runner shoes</a>
+                  </h4>
+
+                  <span class="cart-product-info">
+                    <span class="cart-product-qty">1</span>x $84.00</span>
+                </div><!-- End .product-cart-details -->
+
+                <figure class="product-image-container">
+                  <a href="product.html" class="product-image">
+                    <img th:src="@{fe/images/products/cart/product-1.jpg}" alt="product">
+                  </a>
+                </figure>
+                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+              </div><!-- End .product -->
+            </div><!-- End .cart-product -->
+
+            <div class="dropdown-cart-total">
+              <span>Total</span>
+
+              <span class="cart-total-price">$160.00</span>
+            </div><!-- End .dropdown-cart-total -->
+
+            <div class="dropdown-cart-action">
+              <a href="cart.html" class="btn btn-primary">View Cart</a>
+              <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+            </div><!-- End .dropdown-cart-total -->
+          </div><!-- End .dropdown-menu -->
+        </div><!-- End .cart-dropdown -->
+
+      </div><!-- End .header-right -->
+    </div><!-- End .container -->
+  </div><!-- End .header-middle -->
+
+  <div class="sticky-wrapper" style=""><div class="header-bottom sticky-header">
+    <div class="container">
+      <div class="header-left">
+        <div class="dropdown category-dropdown">
+          <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
+            Browse Categories <i class="icon-angle-down"></i>
+          </a>
+
+          <div class="dropdown-menu">
+            <nav class="side-nav">
+              <ul class="menu-vertical sf-arrows sf-js-enabled" style="touch-action: pan-y;">
+                <li class="item-lead"><a href="#">Daily offers</a></li>
+                <li class="item-lead"><a href="#">Gift Ideas</a></li>
+                <li><a href="#">Beds</a></li>
+
+              </ul><!-- End .menu-vertical -->
+            </nav><!-- End .side-nav -->
+          </div><!-- End .dropdown-menu -->
+        </div><!-- End .category-dropdown -->
+      </div><!-- End .header-left -->
+
+      <div class="header-center">
+        <nav class="main-nav" style="width: 100%;">
+          <ul class="menu " style=" width: 80%;  justify-content: space-between; display: flex">
+            <li class="megamenu-container" style="">
+              <a href="index.html" class="sf-with-ul">Home</a>
+            </li>
+
+            <li>
+              <a href="category.html" class="sf-with-ul">Shop</a>
+              <div class="megamenu megamenu-md" style="display: none;">
+                <div class="row no-gutters">
+                  <div class="col-md-8">
+                    <div class="menu-col">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="menu-title">Shop with sidebar</div><!-- End .menu-title -->
+                          <ul>
+                            <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
+                            <li><a href="category-market.html"><span>Shop Market<span class="tip tip-new">New</span></span></a></li>
+                          </ul>
+
+                          <div class="menu-title">Shop no sidebar</div><!-- End .menu-title -->
+                          <ul>
+                            <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span class="tip tip-hot">Hot</span></span></a></li>
+                            <li><a href="category-fullwidth.html">Shop Fullwidth No Sidebar</a></li>
+                          </ul>
+                        </div><!-- End .col-md-6 -->
+
+                        <div class="col-md-6">
+                          <div class="menu-title">Product Category</div><!-- End .menu-title -->
+                          <ul>
+                            <li><a href="product-category-boxed.html">Product Category Boxed</a></li>
+                            <li><a href="product-category-fullwidth.html"><span>Product Category Fullwidth<span class="tip tip-new">New</span></span></a></li>
+                          </ul>
+                          <div class="menu-title">Shop Pages</div><!-- End .menu-title -->
+                          <ul>
+                            <li><a href="#">Lookbook</a></li>
+                          </ul>
+                        </div><!-- End .col-md-6 -->
+                      </div><!-- End .row -->
+                    </div><!-- End .menu-col -->
+                  </div><!-- End .col-md-8 -->
+
+                  <div class="col-md-4">
+                    <div class="banner banner-overlay">
+                      <a href="category.html" class="banner banner-menu">
+                        <img th:src="@{fe/images/menu/banner-1.jpg}" alt="Banner">
+
+                        <div class="banner-content banner-content-top">
+                          <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div><!-- End .banner-title -->
+                        </div><!-- End .banner-content -->
+                      </a>
+                    </div><!-- End .banner banner-overlay -->
+                  </div><!-- End .col-md-4 -->
+                </div><!-- End .row -->
+              </div><!-- End .megamenu megamenu-md -->
+            </li>
+            <li>
+              <a href="product.html" class="sf-with-ul">Product</a>
+              <div class="megamenu megamenu-sm" style="display: none;">
+                <div class="row no-gutters">
+                  <div class="col-md-6">
+                    <div class="menu-col">
+                      <div class="menu-title">Product Details</div><!-- End .menu-title -->
+                      <ul>
+                        <li><a href="product.html">Default</a></li>
+                        <li><a href="product-centered.html">Centered</a></li>
+                        <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
+                      </ul>
+                    </div><!-- End .menu-col -->
+                  </div><!-- End .col-md-6 -->
+
+                  <div class="col-md-6">
+                    <div class="banner banner-overlay">
+                      <a href="category.html">
+                        <img th:src="@{fe/images/menu/banner-2.jpg}" alt="Banner">
+
+                        <div class="banner-content banner-content-bottom">
+                          <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
+                        </div><!-- End .banner-content -->
+                      </a>
+                    </div><!-- End .banner -->
+                  </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+              </div><!-- End .megamenu megamenu-sm -->
+            </li>
+            <li>
+              <a href="#" class="sf-with-ul">Pages</a>
+
+              <ul style="display: none;">
+                <li>
+                  <a href="about.html" class="sf-with-ul">About</a>
+
+                  <ul style="display: none;">
+                    <li><a href="about.html">About 01</a></li>
+                    <li><a href="about-2.html">About 02</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="contact.html" class="sf-with-ul">Contact</a>
+
+                  <ul style="display: none;">
+                    <li><a href="contact.html">Contact 01</a></li>
+                    <li><a href="contact-2.html">Contact 02</a></li>
+                  </ul>
+                </li>
+                <li><a href="login.html">Login</a></li>
+              </ul>
+            </li>
+          </ul><!-- End .menu -->
+        </nav><!-- End .main-nav -->
+      </div><!-- End .header-center -->
+
+      <div class="header-right">
+        <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
+      </div>
+    </div><!-- End .container -->
+  </div></div><!-- End .header-bottom -->
+</header><!-- End .header -->

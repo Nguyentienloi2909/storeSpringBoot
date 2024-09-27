@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="admin/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <header th:replace="admin/fragments/header :: header"></header>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h2 class="box-title">Thêm Tài Khoản</h2>
+                </div>
+
+
+                <form role="form" th:action="@{/admin/add_account}" method="post" th:object="${registerUser}" >
+                    <div th:if="${EAccount != null}">
+                        <ul style="padding-inline-start: 0">
+                            <li style="list-style: none; color:#932a2a ; font-weight: 600"
+                                th:text="${EAccount}"></li>
+                        </ul>
+                    </div>
+
+                    <div class="box-body ms-5">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên người dùng</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter fullName"  th:field="*{fullName}">
+                            <div th:if="${#fields.errors('fullName') != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li th:each="e : ${#fields.errors('fullName')}"
+                                        style="list-style: none; color:#932a2a; font-weight: 500"
+                                        th:text="${e}"></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">email</label>
+                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter email" th:field="*{email}" >
+                            <div th:if="${#fields.errors('email') != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li th:each="e : ${#fields.errors('email')}"
+                                        style="list-style: none; color:#932a2a; font-weight: 500"
+                                        th:text="${e}"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Số điện thoại</label>
+                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter phone number" th:field="*{phoneNumber}" >
+                            <div th:if="${#fields.errors('phoneNumber') != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li th:each="e : ${#fields.errors('phoneNumber')}"
+                                        style="list-style: none; color:#932a2a; font-weight: 500"
+                                        th:text="${e}"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail4">Mật khẩu</label>
+                            <input type="password" class="form-control" id="exampleInputEmail4" placeholder="Enter password" th:field="*{password}" >
+                            <div th:if="${#fields.errors('password') != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li th:each="e : ${#fields.errors('password')}"
+                                        style="list-style: none; color:#932a2a; font-weight: 500"
+                                        th:text="${e}"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail5">Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" id="exampleInputEmail5" placeholder="Enter password again" name="rePassword" >
+                            <div th:if="${EPassword != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li style="list-style: none; color:#932a2a ; font-weight: 500"
+                                        th:text="${EPassword}"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Trạng thái</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2" th:field="*{enble}">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Hoạt động
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1" th:field="*{enble}" >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Khóa
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer th:replace="admin/fragments/footer :: footer"></footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<div th:replace="admin/fragments/js :: js"></div>
+
+</body>
+</html>

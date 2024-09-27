@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="admin/fragments/head :: head"></head>
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <header th:replace="admin/fragments/header :: header"></header>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h2 class="box-title">Thêm Sản Phẩm</h2>
+                </div>
+
+
+                <form role="form" th:action="@{/admin/add_product}" method="post" th:object="${addProduct}" enctype="multipart/form-data">
+                    <div class="box-body ms-5">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sản phẩm</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter category" th:value="${addProduct.getProductName()}" th:field="*{productName}">
+                            <div th:if="${#fields.errors('productName') != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li th:each="e : ${#fields.errors('productName')}"
+                                        style="list-style: none; color:#932a2a; font-weight: 500"
+                                        th:text="${e}"></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">File image</label>
+                            <input type="file" class="form-control" id="exampleInputEmail2" accept="image/jpeg, image/png, image/gif, image/bmp"     placeholder="Enter image" name="image" >
+                            <div th:if="${eImage != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li style="list-style: none; color:#932a2a ; font-weight: 500"
+                                        th:text="${eImage}"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-6 mb-4">
+                                <div data-mdb-input-init class="form-outline">
+                                    <label for="exampleInputEmail1">Giá gốc</label>
+                                    <input type="number" class="form-control" id="exampleInputEmail3" th:value="${addProduct.getUnitPrice()}" placeholder="Enter unitPrice" th:field="*{unitPrice}">
+                                    <div th:if="${#fields.errors('unitPrice') != null}">
+                                        <ul style="padding-inline-start: 0">
+                                            <li th:each="e : ${#fields.errors('unitPrice')}"
+                                                style="list-style: none; color:#932a2a; font-weight: 500; margin: 0;"
+                                                th:text="${e}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div data-mdb-input-init class="form-outline">
+                                    <label for="exampleInputEmail1">Số lượng</label>
+                                    <input type="number" class="form-control" id="exampleInputEmail4" placeholder="Enter stockQuantity"
+                                           th:value="${addProduct.getStockQuantity()}"  th:field="*{stockQuantity}">
+                                    <div th:if="${#fields.errors('stockQuantity') != null}">
+                                        <ul style="padding-inline-start: 0">
+                                            <li th:each="e : ${#fields.errors('stockQuantity')}"
+                                                style="list-style: none; color:#932a2a; font-weight: 500"
+                                                th:text="${e}"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lang-select">Loại sản phảm:</label>
+                            <select name="lang" id="lang-select" class="form-select" th:field="*{idCategory}">
+                                <option value="0">--</option>
+                                <option th:each="category : ${categories}"
+                                        th:text="${category.categoryName}"
+                                        th:value="${category.idCategory}"></option>
+                            </select>
+                            <div th:if="${eIdCategory != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li style="list-style: none; color:#932a2a ; font-weight: 500"
+                                        th:text="${eIdCategory}"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category Status</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="1" name="flexRadioDefault" id="flexRadioDefault2" th:field="*{productStatus}">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Hiển Thị
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="0" name="flexRadioDefault" id="flexRadioDefault1" th:field="*{productStatus}" >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Ẩn
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Miêu tả</label>
+                            <div>
+                                <textarea name="txtComment" id="txtComment" rows="5" cols="100%" th:value="${addProduct.getDescription()}" th:field="*{description}"></textarea>
+                            </div>
+                            <div th:if="${#fields.errors('description') != null}">
+                                <ul style="padding-inline-start: 0">
+                                    <li th:each="e : ${#fields.errors('description')}"
+                                        style="list-style: none; color:#932a2a; font-weight: 500"
+                                        th:text="${e}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer th:replace="admin/fragments/footer :: footer"></footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<div th:replace="admin/fragments/js :: js"></div>
+
+</body>
+</html>
